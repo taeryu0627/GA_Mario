@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="039590ea-e433-415d-aee9-920e526b97c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Quiz_PyQt/01.PyQt_basic_Quiz.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab_PyQt/01. PyQt_basic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab_PyQt/02.PyQt_widget.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hello.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hello.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +39,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.01.PyQt_basic_Quiz">
+  <component name="RunManager" selected="Python.02.PyQt_widget">
     <configuration name="01. PyQt_basic" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="GA_Mario" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -85,6 +82,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="02.PyQt_widget" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="GA_Mario" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lab_PyQt" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab_PyQt/02.PyQt_widget.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Hello" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="GA_Mario" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -108,6 +126,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.02.PyQt_widget" />
         <item itemvalue="Python.01.PyQt_basic_Quiz" />
         <item itemvalue="Python.01. PyQt_basic" />
         <item itemvalue="Python.Hello" />
