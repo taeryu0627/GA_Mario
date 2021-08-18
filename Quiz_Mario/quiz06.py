@@ -28,7 +28,7 @@ class MyApp(QWidget):
         self.screen = self.env.get_screen()
 
         # 창의 크기 고정
-        self.setFixedSize(self.width, self.height)
+        self.setFixedSize(1080, 480)
         # 창 제목
         self.setWindowTitle('GA Mario')
 

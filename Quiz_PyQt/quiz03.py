@@ -19,11 +19,11 @@ class MyApp(QWidget):
         # 그리기 시작
         painter.begin(self)
 
-# 삼각형 그리기
+# 사각형 그리기
         painter.setPen(QPen(Qt.black, 1.0, Qt.SolidLine))
         # 하얀색 사각형
         painter.drawRect(50, 0, 50, 50)
-        painter.drawRect(0, 50, 50, 50)
+
         # 파랑색 사각형
         painter.setBrush(QBrush(Qt.blue))
         painter.drawRect(0, 0, 50, 50)
@@ -50,8 +50,6 @@ class MyApp(QWidget):
         # 회색 원
         painter.setBrush(QBrush(QColor.fromRgb(125, 125, 125)))
         painter.drawEllipse(60, 250, 50, 50)
-
-
 
         painter.end()
 
