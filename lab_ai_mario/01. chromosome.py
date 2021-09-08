@@ -6,31 +6,6 @@ from PyQt5.QtGui import QImage, QPixmap, QPainter, QBrush
 from PyQt5.QtCore import Qt, QTimer
 
 
-class Chromosome:
-    def __init__(self):
-
-        self.relu = lambda x: np.maximum(0, x)
-        self.sigmoid = lambda x: 1.0 / (1.0 + np.exp(-x))
-
-        self.w1 = np.random.uniform(low=-1, high=1, size=(80, 9))
-        self.b1 = np.random.uniform(low=-1, high=1, size=(9,))
-
-        self.w2 = np.random.uniform(low=-1, high=1, size=(9, 6))
-        self.b2 = np.random.uniform(low=-1, high=1, size=(6,))
-
-        self.distance = 0
-        self.max_distance = 0
-        self.frames = 0
-        self.stop_frames = 0
-        self.win = 0
-
-    def predict(self, data):
-        l1 = self.relu(np.matmul(data, self.w1) + self.b1)
-        output = self.sigmoid(np.matmul(l1, self.w2) + self.b2)
-        result = (output > 0.5).astype(np.int)
-        return result
-
-
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
@@ -53,16 +28,26 @@ class MyApp(QWidget):
         # 화면 가져오기
         self.screen = self.env.get_screen()
         # 창의 크기 고정
-        self.setFixedSize(self.width*self.screen_size + 600, self.height*self.screen_size)
+        self.setFixedSize(self.width * self.screen_size + 600, self.height * self.screen_size)
 
         self.screen_label = QLabel(self)
-        self.screen_label.setGeometry(0, 0, self.width*self.screen_size, self.height*self.screen_size)
+        self.screen_label.setGeometry(0, 0, self.width * self.screen_size, self.height * self.screen_size)
 
         # 타이머 생성
         qtimer = QTimer(self)
         # 타이머 호출
         qtimer.timeout.connect(self.game_timer)
-        qtimer.start(1000//game_speed)
+        qtimer.start(1000 // game_speed)
+
+        self.relu = lambda x: np.maximum(0, x)
+        self.sigmoid = lambda x: 1.0 / (1.0 + np.exp(-x))
+
+        # (x w1) -> (l1 w2) -> y
+        self.w1 = np.random.uniform(low=-1, high=1, size=(13 * 16, 9))
+        self.b1 = np.random.uniform(low=-1, high=1, size=(9,))
+
+        self.w2 = np.random.uniform(low=-1, high=1, size=(9, 6))
+        self.b2 = np.random.uniform(low=-1, high=1, size=(6,))
 
         # 창 띄우기
         self.show()
@@ -147,7 +132,7 @@ class MyApp(QWidget):
 
         # 현재 화면 추출
         screen_tiles = np.concatenate((full_screen_tiles, full_screen_tiles), axis=1)[:,
-                               screen_tile_offset:screen_tile_offset + 16]
+                       screen_tile_offset:screen_tile_offset + 16]
 
         painter.setBrush(QBrush(Qt.black))
         painter.drawRect(self.width * self.screen_size + (screen_tile_offset + player_tile_position_x) % 32 * 15,
@@ -157,7 +142,7 @@ class MyApp(QWidget):
             for h in range(screen_tiles.shape[1]):
                 if screen_tiles[w][h] == 0:
                     painter.setBrush(QBrush(Qt.lightGray))
-                    painter.drawRect(self.width * self.screen_size + 15 * h , 250 + 15 * w, 15, 15)
+                    painter.drawRect(self.width * self.screen_size + 15 * h, 250 + 15 * w, 15, 15)
 
                 elif screen_tiles[w][h] == -1:
                     painter.setBrush(QBrush(Qt.red))
@@ -170,6 +155,17 @@ class MyApp(QWidget):
         painter.setBrush(QBrush(Qt.black))
         painter.drawRect(self.width * self.screen_size + 15 * player_tile_position_x, 250 + 15 * player_tile_position_y,
                          15, 15)
+
+        data = np.random.randint(0, 3, (13 * 16,), dtype=np.int)
+        l1 = np.matmul(data, self.w1) + self.b1
+        l1_output = self.relu(l1)
+        l2 = np.matmul(l1_output, self.w2) + self.b2
+        l2_output = self.sigmoid(l2)
+        predict = l2_output
+        result = (predict > 0.5).astype(np.int)
+        print(result)
+
+        self.button = np.array([result[5], 0, 0, 0, result[0], result[1], result[2], result[3], result[4]])
 
         painter.end()
 

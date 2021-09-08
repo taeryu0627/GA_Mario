@@ -2,33 +2,8 @@ import retro
 import sys
 import numpy as np
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel
-from PyQt5.QtGui import QImage, QPixmap, QPainter, QBrush
+from PyQt5.QtGui import QImage, QPixmap, QPainter, QPen, QBrush, QColor
 from PyQt5.QtCore import Qt, QTimer
-
-
-class Chromosome:
-    def __init__(self):
-
-        self.relu = lambda x: np.maximum(0, x)
-        self.sigmoid = lambda x: 1.0 / (1.0 + np.exp(-x))
-
-        self.w1 = np.random.uniform(low=-1, high=1, size=(80, 9))
-        self.b1 = np.random.uniform(low=-1, high=1, size=(9,))
-
-        self.w2 = np.random.uniform(low=-1, high=1, size=(9, 6))
-        self.b2 = np.random.uniform(low=-1, high=1, size=(6,))
-
-        self.distance = 0
-        self.max_distance = 0
-        self.frames = 0
-        self.stop_frames = 0
-        self.win = 0
-
-    def predict(self, data):
-        l1 = self.relu(np.matmul(data, self.w1) + self.b1)
-        output = self.sigmoid(np.matmul(l1, self.w2) + self.b2)
-        result = (output > 0.5).astype(np.int)
-        return result
 
 
 class MyApp(QWidget):
