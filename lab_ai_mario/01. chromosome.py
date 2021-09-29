@@ -182,42 +182,6 @@ class MyApp(QWidget):
         self.update_screen()
         self.update()
 
-    # 키보드 누름
-    def keyPressEvent(self, event):
-        key = event.key()
-
-        if key == Qt.Key_Up:
-            self.button[4] = 1
-        if key == Qt.Key_Down:
-            self.button[5] = 1
-        if key == Qt.Key_Left:
-            self.button[6] = 1
-        if key == Qt.Key_Right:
-            self.button[7] = 1
-        if key == Qt.Key_Z:
-            self.button[8] = 1
-        if key == Qt.Key_X:
-            self.button[0] = 1
-
-    # 키보드 똄
-    def keyReleaseEvent(self, event):
-        key = event.key()
-
-        if key == Qt.Key_Up:
-            self.button[4] = 0
-        if key == Qt.Key_Down:
-            self.button[5] = 0
-        if key == Qt.Key_Left:
-            self.button[6] = 0
-        if key == Qt.Key_Right:
-            self.button[7] = 0
-        if key == Qt.Key_Z:
-            self.button[8] = 0
-        if key == Qt.Key_X:
-            self.button[0] = 0
-        if key == Qt.Key_R:
-            self.env.reset()
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

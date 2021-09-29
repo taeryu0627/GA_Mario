@@ -155,8 +155,8 @@ class MyApp(QWidget):
 
     def update_screen(self):
         screen = self.env.get_screen()
-        screen_qimage = QImage(screen, screen.shape[1], screen.shape[0], QImage.Format_RGB888)
-        pixmap = QPixmap(screen_qimage)
+        qimage = QImage(screen, screen.shape[1], screen.shape[0], QImage.Format_RGB888)
+        pixmap = QPixmap(qimage)
         pixmap = pixmap.scaled(448, 480, Qt.IgnoreAspectRatio)
         self.screen_label.setPixmap(pixmap)
 
